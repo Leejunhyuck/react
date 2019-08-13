@@ -21,10 +21,32 @@ export default class Todo extends Component{
 
     }
 
+
+    changeComplete = (tno) =>{
+
+        console.log(tno)
+
+        const target = this.state.todos.filter(obj => obj.tno === tno)[0]
+        const index = this.state.todos.indexOf(target)
+
+        const tempArr = this.state.todos
+
+        tempArr[index] = Object.assign(target, {complete: !target.complete})
+
+        console.log(tempArr)
+
+        this.setState({todos:tempArr})
+
+
+
+
+    }
+
+
     addTodo=(title) =>{
         const arr = this.state.todos
 
-       arr.push({tno:++Todo.count,title:title})
+       arr.push({tno:++Todo.count,title:title,complete:false})
         this.setState(
 
             {todos:arr}
@@ -39,7 +61,7 @@ export default class Todo extends Component{
             <div style={backgroundColor}>
                 <h1>Todo</h1>
                 <Todoinput add={this.addTodo}></Todoinput>
-                <TodoList todos={this.state.todos}></TodoList>
+                <TodoList todos={this.state.todos} change={this.changeComplete}></TodoList>
             </div>
 
         )
