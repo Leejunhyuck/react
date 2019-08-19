@@ -1,40 +1,38 @@
-import React,{Component} from 'react';
+import React,{Component} from 'react'
 import {BrowserRouter as Router, Route,Link,Redirect } from 'react-router-dom'
 import TodoList from '../components/TodoList';
+import TodoInput from '../components/Todoinput';
 
-export default class Todo extends Component{
-
+export default class Todo extends Component {
     constructor(props){
         super()
-        
     }
-
-    render(){
+    render() {
 
         const {match} = this.props
+
         console.log(match.path)
 
-        if(match.path === '/todo'){
-            
-            return(
-                <Router>
-                <Redirect to='/todo/list/1'></Redirect>
-                <Route path="/todo/list/:page" component={TodoList}></Route>
-                </Router>
+        if(match.path ==='/todo'){
+            return (
+            <Router>
+            <Redirect to="/todo/list/1"></Redirect>
+            <Route path="/todo/list/:page" component ={TodoList}></Route>    
+            <Route path="/todo/register" component ={TodoInput}></Route>    
+            </Router>    
             )
-
         }
+
 
         return(
             <Router>
             <div>
                 <h1>Todo</h1>
-            </div>   
-            <Route path="/todo/list/:page" component={TodoList}></Route>
+            </div>
+
+            <Route path="/todo/list/:page" component ={TodoList}></Route>    
 
             </Router>
-
         )
-
     }
 }

@@ -42,6 +42,7 @@ return(
 
     <div>
         <h3>Todo List {page}</h3>
+        <h4><Link to='/todo/register'>Add Todo</Link></h4>
         <ul>
             <li>{list}</li>
 
