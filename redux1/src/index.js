@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore} from 'redux'
+import {createStore,applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import countReducer from './reducers/countReducer'
 import panelReducer from './reducers/panelReducer'
+import {composeWithDevTools} from 'redux-devtools-extension'
 
-const store = createStore(panelReducer)
+const store = createStore(composeWithDevTools(panelReducer))
 //const store = createStore(countReducer) 
 
 ReactDOM.render(<Provider store={store}><App></App></Provider>, document.getElementById('root'));
